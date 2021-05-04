@@ -10,10 +10,10 @@
 
       <body>
             <?php
-      $list=[10,10,400,51,36,845];
+      $list = [10, 10, 400, 51, 36, 845];
       echo max($list);
       echo '<br/>';
-      $l=array_chunk($list,2);
+      $l = array_chunk($list, 2);
       print_r($l);
       echo '<br/>';
       print_r(array_count_values($list));
@@ -24,9 +24,9 @@
       echo '<br/>';
       echo count($list);
       var_dump($list);
-      
 
-           
+
+
       ?>
       </body>
 
