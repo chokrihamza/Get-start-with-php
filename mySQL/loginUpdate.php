@@ -1,17 +1,11 @@
+<!-- connect to db-->
+<?php  include('db.php');?>
+<!-- create query for  db-->
+<?php  include('functions.php');?>
 <?php
-// @connect to the data base 
- include('db.php');
-    //@create a query
-      $query = "SELECT * FROM users";
-     
-      $result = mysqli_query($connection, $query);
-      if (!$result) {
-            die('QUERY FAILED' . mysqli_error());
-            
-      }
-   
-        
-   
+   if(isset($_POST['submit'])){
+     updateTable();
+   }
 ?>
 
 <!DOCTYPE html>
@@ -28,19 +22,29 @@
 
   <body>
     <div class='container'>
-      <div class='col-sm-6 bg-warning'>
-        <?php
-         while($row=mysqli_fetch_assoc($result)){?>
-        <pre>
-          <?php
-             print_r($row);
+      <div class='col-sm-3'></div>
+      <form action='loginUpdate.php' method='post'>
+        <div class='form-group'>
+          <label for='username'>Username</label>
+          <input name='username' id='username' type='text' class='form-control' />
+        </div>
+        <div class='form-group'>
+          <label for='password'>Password</label>
+          <input name='password' type='password' class='form-control' />
+        </div>
+        <div class='form-group'>
+          <label for='ID'>ID</label>
+          <select name='id' id=''>
+            <?php
+            showAllData();
           ?>
-           </pre>
-        <?php
-         }
-        ?>
 
-      </div>
+          </select>
+
+        </div>
+        <input type='submit' name='submit' value='Update' class="btn btn-primary mb-3" />
+      </form>
+
     </div>
 
   </body>
