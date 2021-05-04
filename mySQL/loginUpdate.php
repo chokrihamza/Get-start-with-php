@@ -1,11 +1,11 @@
 <!-- connect to db-->
-<?php  include('db.php');?>
+<?php include('db.php'); ?>
 <!-- create query for  db-->
-<?php  include('functions.php');?>
+<?php include('functions.php'); ?>
 <?php
-   if(isset($_POST['submit'])){
-     updateTable();
-   }
+if (isset($_POST['submit'])) {
+  updateTable();
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +36,13 @@
           <label for='ID'>ID</label>
           <select name='id' id=''>
             <?php
-            showAllData();
+          showAllData();
           ?>
 
           </select>
 
         </div>
-        <input type='submit' name='submit' value='Update' class="btn btn-primary mb-3" />
+        <input type='submit' name='submit' value='Update' class="btn btn-warning mb-3" />
       </form>
 
     </div>

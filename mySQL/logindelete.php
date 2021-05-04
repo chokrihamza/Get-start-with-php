@@ -1,28 +1,11 @@
-<?php include('db.php')?>
+<!-- connect to db-->
+<?php include('db.php'); ?>
+<!-- create query for  db-->
+<?php include('functions.php'); ?>
 <?php
-   
-   if(isset($_POST['submit'])){
-         $username=$_POST['username'];
-         $password=$_POST['password'];
-         
-      $query = "INSERT INTO users(name,password)";
-      $query .= "VALUES('$username','$password')";
-      $result = mysqli_query($connection, $query);
-      
-      if (!$result) {
-    die('QUERY FAILED' . mysqli_error($connection));
-            
-      }
-        /* if($username&& $password){
-            echo $username;
-            echo '<br/>';
-            echo $password;
-         }else{
-               echo 'this field cannot be blank';
-               
-         }*/
-        
-   }
+if (isset($_POST['submit'])) {
+  deleteRows();
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +23,7 @@
   <body>
     <div class='container'>
       <div class='col-sm-3'></div>
-      <form action='login.php' method='post'>
+      <form action='logindelete.php' method='post'>
         <div class='form-group'>
           <label for='username'>Username</label>
           <input name='username' id='username' type='text' class='form-control' />
@@ -49,7 +32,17 @@
           <label for='password'>Password</label>
           <input name='password' type='password' class='form-control' />
         </div>
-        <input type='submit' name='submit' value='Send' class="btn btn-primary mb-3" />
+        <div class='form-group'>
+          <label for='ID'>ID</label>
+          <select name='id' id=''>
+            <?php
+          showAllData();
+          ?>
+
+          </select>
+
+        </div>
+        <input type='submit' name='submit' value='Delete' class="btn btn-danger mb-3" />
       </form>
 
     </div>
