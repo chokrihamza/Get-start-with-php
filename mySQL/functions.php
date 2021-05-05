@@ -6,7 +6,12 @@ function createRows()
   if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
+    $username = mysqli_real_escape_string($connection, $username);
+    $password = mysqli_real_escape_string($connection, $password);
+    $hashFormat = "$2y$10$";
+    $salt = "thisisacrazystringforhash";
+    $hashAndSalt = $hashFormat . $salt;
+    $password = crypt($password, $hashAndSalt);
     $query = "INSERT INTO users(name,password)";
     $query .= "VALUES('$username','$password')";
     $result = mysqli_query($connection, $query);
